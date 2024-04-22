@@ -1,20 +1,45 @@
+import { Letter, Oversize, Package, Shipment } from "./Shipments";
 import { IShipper } from "./interfaces";
 
 export class AirEastShipper implements IShipper{
-    getCost(): number {
-        return 39;
+    getCost(shipment:Shipment): number {
+        if(shipment instanceof Letter){
+            return  0.39 * shipment.weight;
+        }else {
+            // Package and Oversized
+            let cost =  0.25 * shipment.weight;
+            if(shipment instanceof Oversize){
+                return cost+10;
+            }
+            return cost;
+        }
     }    
 } 
 
 export class ChicagoSprintShipper implements IShipper{
-    getCost(): number {
-        return 42;
+    getCost(shipment:Shipment): number {
+        if(shipment instanceof Letter){
+            return 0.42 * shipment.weight;
+        }else{
+            //Package and oversize no charge
+            return 0.20 * shipment.weight;
+        }
+
     }
 }
 
 export class PacificParcelShipper implements IShipper{
-    getCost(): number {
-        return 51;
+    getCost(shipment:Shipment): number {
+        if(shipment instanceof Letter){
+            return 0.51 * shipment.weight;
+        }else{
+            //Package and oversized
+            let cost = 0.20 * shipment.weight;
+            if(shipment instanceof Oversize){
+                return cost + 0.02*shipment.weight;
+            }
+            return cost;
+        }
     }
 }
 

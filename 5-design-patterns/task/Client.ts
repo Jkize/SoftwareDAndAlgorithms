@@ -1,4 +1,4 @@
-import { Shipment } from "./Shipment";
+import { FactoryShipment, Shipment } from "./Shipments";
 
 const mockShipmentData = {
     ShipmentId:0,
@@ -14,7 +14,7 @@ export class Client{
     mockShipment:Shipment;
 
     constructor(){
-        this.mockShipment = new Shipment(mockShipmentData);
+        this.mockShipment = FactoryShipment.createShipment(mockShipmentData);
     }
 
     ship(){

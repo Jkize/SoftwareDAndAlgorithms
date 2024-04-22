@@ -1,3 +1,5 @@
+import { Shipment } from "./Shipments";
+
 export interface IShipmentData{
     ShipmentId:number;
     Weight:number;
@@ -8,5 +10,5 @@ export interface IShipmentData{
 }
 
 export interface IShipper{
-    getCost():number;
+    getCost(shipment:Shipment):number;
 }
