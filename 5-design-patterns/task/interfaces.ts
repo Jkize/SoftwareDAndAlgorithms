@@ -6,3 +6,7 @@ export interface IShipmentData{
     ToAddress:string;
     ToZipCode:string;
 }
+
+export interface IShipper{
+    getCost():number;
+}

@@ -1,3 +1,4 @@
+import { FactoryStrategy } from "./Shippers";
 import { IShipmentData } from "./interfaces";
 
 export class Shipment{
@@ -30,7 +31,7 @@ export class Shipment{
     }
 
     protected getCost(){
-        return this.weight*39;
+        return this.weight* FactoryStrategy.create(this.fromZipCode).getCost();
     }
 
 }
