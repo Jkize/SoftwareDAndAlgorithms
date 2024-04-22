@@ -21,12 +21,11 @@ export abstract class Shipment{
 
 
     static getShipmentId():number{
-        
         return this.idShipment++;
     }
 
     ship(){
-       return `shipment ID ${this.shipmentId} from ${this.fromAdress} to ${this.toAddress} with a cost of ${this.getCost()} ` ; 
+        return `Shipment with the ID ${this.shipmentId} will be picked up from ${this.fromAdress} ${this.fromZipCode} and shipped to  ${this.toAddress} ${this.toZipCode} \nCost = ${this.getCost()}`
     }
 
     protected getCost(){
@@ -66,5 +65,15 @@ export class FactoryShipment{
             return new Package(dataShipment);
         }
         return new  Oversize(dataShipment);
+    }
+}
+
+export class ShipmentDecorator{
+
+    constructor(private wrapperShipment:Shipment){
+    }
+
+    ship(){
+        return this.wrapperShipment.ship()+"\n**MARK FRAGILE**\n**MARK DO NOT LEAVE IF ADDRESS NOT AT HOME**\n**MARK RETURN RECEIPT REQUESTED**"
     }
 }

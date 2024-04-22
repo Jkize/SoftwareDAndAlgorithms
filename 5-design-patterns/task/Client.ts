@@ -1,4 +1,4 @@
-import { FactoryShipment, Shipment } from "./Shipments";
+import { FactoryShipment, Shipment, ShipmentDecorator } from "./Shipments";
 
 const mockShipmentData = {
     ShipmentId:0,
@@ -15,10 +15,16 @@ export class Client{
 
     constructor(){
         this.mockShipment = FactoryShipment.createShipment(mockShipmentData);
+        this.ship();
+        this.shipItself();
     }
 
     ship(){
         console.log(this.mockShipment.ship());
+    }
+
+    shipItself(){
+        console.log((new ShipmentDecorator(this.mockShipment)).ship());
     }
 
 }
