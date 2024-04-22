@@ -1,2 +1,4 @@
 # Ignorar todas las carpetas node_modules
 **/node_modules/
+/functional-programming
+/question_interview_technical
