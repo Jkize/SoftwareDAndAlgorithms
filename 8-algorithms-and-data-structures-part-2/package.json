@@ -1,0 +1,29 @@
+{
+  "name": "scheduler-homework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn src/main.ts",
+    "build": "tsc",
+    "test": "jest",
+    "test:queue": "jest test/PriorityQueue.test.ts",
+    "test:scheduler": "jest test/Scheduler.test.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "prettier": "^3.2.5",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "ts-node-dev": "^2.0.0"
+
+  },
+  "prettier": {
+    "printWidth": 120
+  }
+}
