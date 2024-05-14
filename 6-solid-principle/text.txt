@@ -1,0 +1,40 @@
+Single Responsibility Principle	
+
+    MatDialog is a service that has the responsibility to open Dialogs and close    
+    https://github.com/angular/components/blob/01540bb924472fd22276b62a9d72b401a13bfe77/src/material/dialog/dialog.ts#L81
+
+    ** Violation:
+    class _DisposeViewRepeaterStrategy https://github.com/angular/components/blob/01540bb924472fd22276b62a9d72b401a13bfe77/src/cdk/collections/dispose-view-repeater-strategy.ts#L36-L79
+    class handle both the logic for applying changes to views (applyChanges) and the detach logic (detach) and also without implementation, It's neccesary to separate the responsabilities
+
+
+    class DragRef https://github.com/angular/components/blob/01540bb924472fd22276b62a9d72b401a13bfe77/src/cdk/drag-drop/drag-ref.ts#L115 
+    has a lot of responsabilities like initializeDragSequence, animation, creation placeHolderElement and more
+
+Open / Closed Principle	
+    The next class BaseRowDef is considered with this principle because is closed for modification and open (There are some classess
+    that implement it)
+    https://github.com/angular/components/blob/01540bb924472fd22276b62a9d72b401a13bfe77/src/cdk/table/row.ts#L42
+
+
+
+Liskov Substitution Principle	
+    The next two classess extends from BaseRowDef
+        CdkHeaderRowDef https://github.com/angular/components/blob/01540bb924472fd22276b62a9d72b401a13bfe77/src/cdk/table/row.ts#L94
+        CdkFooterRowDef https://github.com/angular/components/blob/01540bb924472fd22276b62a9d72b401a13bfe77/src/cdk/table/row.ts#L146
+    and in the method extractCellTemplate has the liskov substitution principle
+    https://github.com/angular/components/blob/01540bb924472fd22276b62a9d72b401a13bfe77/src/cdk/table/row.ts#L72-L82
+
+
+Interface Seggregation Principle	
+    * CanStick: Checks if the sticky input has been changed since the last time function
+    Link: https://github.com/angular/components/blob/01540bb924472fd22276b62a9d72b401a13bfe77/src/cdk/table/can-stick.ts#L20
+    Link Implementations: CdkColumnDef and CdkHeaderRowDef  (https://github.com/search?q=repo%3Aangular/components%20CanStick&type=code)
+
+
+
+Dependency Inversion Principle
+    I can't found an example of dependency inversion principle in pure code.
+    I found the basic using the library @angular/core. But those only injected like a class not like interface 
+    so the violation about this principle is the injections is treated like class 
+    Examle violation MatDialog: https://github.com/angular/components/blob/01540bb924472fd22276b62a9d72b401a13bfe77/src/material/dialog/dialog.ts#L81
